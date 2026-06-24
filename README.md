@@ -2,10 +2,6 @@
 
 Et professionelt **FiveM revisor / hvidvask script** med dansk NUI, `ox_target`, candlestick-dashboard og multi-framework support.
 
-<p align="center">
-  <img src="./assets/preview.png" alt="AM Revisor Preview" width="900"/>
-</p>
-
 ---
 
 ## Features
@@ -306,9 +302,7 @@ bridge/server.lua
 
 ## Preview
 
-<p align="center">
-  <img src="./assets/preview.png" alt="AM Revisor UI" width="900"/>
-</p>
+<img width="1243" height="836" alt="Udklip" src="https://github.com/user-attachments/assets/582f1b06-8e9d-47b5-be0b-ba23397a6389" />
 
 ---
 
