@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revisor Terminal</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <main id="app" class="hidden">
+        <section class="terminal">
+            <img class="hero-logo" src="revisor-terminal-logo.png" alt="Revisor Terminal" />
+
+            <button id="closeBtn" class="close-btn" type="button">×</button>
+
+            <section class="content">
+                <section class="chart-panel panel">
+                    <div class="panel-head">
+                        <div>
+                            <p class="eyebrow">Marked</p>
+                            <h2>AML / DKK Candlestick kurs</h2>
+                        </div>
+                    </div>
+
+                    <div class="chart">
+                        <svg id="stockChart" viewBox="0 0 700 270" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="area" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0%" stop-color="#ff334b" stop-opacity="0.22"/>
+                                    <stop offset="100%" stop-color="#ff334b" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <path id="areaPath" d="" fill="url(#area)"></path>
+                            <polyline id="linePath" points="" fill="none" stroke="#ff334b" stroke-width="3"></polyline>
+                            <g id="candles"></g>
+                        </svg>
+
+                        <div id="chartTooltip" class="chart-tooltip hidden">0</div>
+                    </div>
+                </section>
+
+                <section class="transaction-panel panel">
+                    <div class="panel-head">
+                        <div>
+                            <p class="eyebrow">Transaktion</p>
+                            <h2>Hvidvask ordre</h2>
+                        </div>
+
+                        <div class="order-box">
+                            <span id="queueText">KLAR</span>
+                        </div>
+                    </div>
+
+                    <div class="transaction-grid">
+                        <label class="client-field">
+                            <span>Klient</span>
+                            <button id="clientDropdownBtn" class="dropdown-btn" type="button">
+                                <div>
+                                    <b id="dropdownLabel">Ingen klient valgt</b>
+                                    <small id="dropdownMeta">Klik for at vælge klient tæt på</small>
+                                </div>
+                                <i>⌄</i>
+                            </button>
+
+                            <div id="clientDropdown" class="dropdown-menu hidden">
+                                <div class="search-wrap">
+                                    <input id="clientSearch" type="text" placeholder="Søg efter navn..." />
+                                </div>
+                                <div id="players" class="players"></div>
+                            </div>
+
+                            <input id="selectedClient" class="hidden-real-input" readonly />
+                        </label>
+
+                        <label>
+                            <span>Sorte penge</span>
+                            <input id="amount" type="number" placeholder="50000" />
+                        </label>
+
+                        <label>
+                            <span>Revisor procent</span>
+                            <input id="percent" type="number" />
+                        </label>
+
+                        <label>
+                            <span>Klient får</span>
+                            <input id="clientGets" readonly />
+                        </label>
+
+                        <label>
+                            <span>Revisor får</span>
+                            <input id="revisorGets" readonly />
+                        </label>
+
+                        <button id="startBtn">Start transaktion</button>
+                    </div>
+
+                    <div class="progress-wrap hidden" id="progressWrap">
+                        <div class="progress-info">
+                            <span id="progressText">Behandler transaktion...</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress">
+                            <div id="progressBar"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="summary-panel panel">
+                    <p class="eyebrow">Oversigt</p>
+
+                    <div class="summary-main">
+                        <span>Samlet beløb</span>
+                        <strong id="summaryAmount">0 DKK</strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Klient får</span>
+                        <b id="summaryPayout">0 DKK</b>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Revisor andel</span>
+                        <b id="summaryCut">0 DKK</b>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Gebyr</span>
+                        <b id="summaryFee">0%</b>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Risiko</span>
+                        <b id="riskLevel">LAV</b>
+                    </div>
+
+                    <span id="topRisk" class="hidden">LAV</span>
+                    <span id="marketStatus" class="hidden">ONLINE</span>
+                    <span id="orderId" class="hidden">ORD-0000</span>
+                </aside>
+            </section>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
